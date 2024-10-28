@@ -9,8 +9,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
 import lombok.Data;
 
 @Entity
@@ -27,5 +30,12 @@ public class TipoPersona {
 	@OneToMany(mappedBy = "tipoPersona", cascade= CascadeType.ALL)
 	@JsonIgnore
 	List<Personal> personals;
+	
+	@ManyToMany
+	@JoinTable(
+			  name = "tipo_personal_funcion", 
+			  joinColumns = @JoinColumn(name = "tipo_persona_id"), 
+			  inverseJoinColumns = @JoinColumn(name = "funcion_id"))
+    List<Funcion> funciones;
 
 }
