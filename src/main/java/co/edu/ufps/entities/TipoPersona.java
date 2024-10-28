@@ -37,5 +37,14 @@ public class TipoPersona {
 			  joinColumns = @JoinColumn(name = "tipo_persona_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "funcion_id"))
     List<Funcion> funciones;
+	
+	
+	public void addFuncion(Funcion funcion) {
+		this.funciones.add(funcion);
+	}
+	
+	public void removeFuncion(Funcion funcion) {
+		this.funciones.remove(funcion);
+	}
 
 }

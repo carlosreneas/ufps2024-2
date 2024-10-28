@@ -24,6 +24,7 @@ public class Funcion {
 	private String descripcion;
 	
 	@ManyToMany(mappedBy = "funciones")
+	@JsonIgnore
     List<TipoPersona> tipoPersonas;
 
 }
