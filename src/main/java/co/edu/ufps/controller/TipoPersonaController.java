@@ -47,15 +47,15 @@ public class TipoPersonaController {
 	}
 	
 	@PostMapping("/{id}/add_funcions/{funcionId}")
-	public TipoPersona create(@PathVariable Integer id, @PathVariable Integer funcionId) {
+	public TipoPersona addFunction(@PathVariable Integer id, @PathVariable Integer funcionId) {
 		
 		TipoPersona nuevaTipoPersona = tipoPersonaService.addFuncion(id, funcionId);
 		return nuevaTipoPersona;
 	}
 	
 	@PutMapping("/{id}")
-	public TipoPersona update(@PathVariable Integer id) {
-		return tipoPersonaService.update(id);
+	public TipoPersona update(@PathVariable Integer id, @RequestBody TipoPersona tipoPersona) {
+		return tipoPersonaService.update(id, tipoPersona);
 	}
 	
 	@DeleteMapping("/{id}")

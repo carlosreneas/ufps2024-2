@@ -48,11 +48,22 @@ public class TipoPersonaService {
 	}
 
 	public TipoPersona create(TipoPersona tipoPersona) {
-		// TODO Auto-generated method stub
 		return tipoPersonaRepository.save(tipoPersona);
 	}
 
-	public TipoPersona update(Integer id) {
+	public TipoPersona update(Integer id, TipoPersona tipoPersona) {
+		
+		Optional<TipoPersona> tipoPersonaOpt =  tipoPersonaRepository.findById(id);
+		
+		if (tipoPersonaOpt.isPresent()) {
+			
+			TipoPersona tipoPersonaUpd = tipoPersonaOpt.get();
+			tipoPersonaUpd.setDescripcion(tipoPersona.getDescripcion());
+			tipoPersonaRepository.save(tipoPersonaUpd);
+			
+			return tipoPersonaUpd;
+			
+		}
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -72,8 +83,7 @@ public class TipoPersonaService {
 				tipoPersona.addFuncion(funcionOpt.get());
 				
 			}
-			
-			
+
 			return tipoPersonaRepository.save(tipoPersona);
 		}
 		

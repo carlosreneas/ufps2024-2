@@ -48,8 +48,19 @@ public class FuncionService {
 		return funcionRepository.save(funcion);
 	}
 
-	public Funcion update(Integer id) {
+	public Funcion update(Integer id, Funcion funcion) {
 		// TODO Auto-generated method stub
+		
+		Optional<Funcion> funcionOpt =  funcionRepository.findById(id);
+		
+		if (funcionOpt.isPresent()) {
+			
+			Funcion funcionUpdate = funcionOpt.get();
+			funcionUpdate.setDescripcion(funcion.getDescripcion());
+			funcionRepository.save(funcionUpdate);
+			return funcion;
+		}
+		
 		return null;
 	}
 

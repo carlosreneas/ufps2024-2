@@ -48,8 +48,8 @@ public class FuncionController {
 	}
 	
 	@PutMapping("/{id}")
-	public Funcion update(@PathVariable Integer id) {
-		return funcionService.update(id);
+	public Funcion update(@PathVariable Integer id, @RequestBody Funcion funcion) {
+		return funcionService.update(id, funcion);
 	}
 	
 	@DeleteMapping("/{id}")
